@@ -20,5 +20,3 @@ function run(examples) {
 run(playgroundCallback);
 run(playgroundPromises);
 run(playgroundAsync);
-
-
