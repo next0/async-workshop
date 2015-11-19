@@ -1,0 +1,31 @@
+{
+  "name": "async-workshop",
+  "version": "0.0.1",
+  "description": "async requests visualization project",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && mkdir ./dist && cp ./src/index.html ./dist/index.html && ./node_modules/.bin/webpack --production --config ./webpack.config.js",
+    "start": "rm -rf ./dist && mkdir ./dist && cp ./src/index.html ./dist/index.html && ./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --http --port 9999 --no-info --inline --content-base ./dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "next0",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.1.0",
+    "babel-core": "^6.1.4",
+    "babel-loader": "^6.1.0",
+    "babel-plugin-transform-async-to-generator": "^6.1.18",
+    "babel-polyfill": "^6.1.19",
+    "babel-preset-es2015": "^6.1.4",
+    "css-loader": "^0.22.0",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.8.4",
+    "postcss-loader": "^0.8.0",
+    "webpack": "^1.12.4",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "d3": "^3.5.8",
+    "events": "^1.1.0"
+  }
+}

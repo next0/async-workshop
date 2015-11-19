@@ -1,0 +1,98 @@
+body {
+    padding: 5px;
+    margin: 0;
+}
+
+/* playground */
+.playground {
+    font-size: 0;
+    padding: 3px 0;
+}
+
+.playground__title {
+    width: 100%;
+    font-size: 16px;
+    line-height: 30px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.playground__requests, .playground__logs {
+    display: inline-block;
+    overflow: auto;
+    height: 120px;
+    border: 1px solid #DADADA;
+    box-sizing: border-box;
+}
+.playground__requests {
+    width: 60%;
+}
+.playground__logs {
+    width: 40%;
+    border-left: 0;
+}
+
+
+/* logs */
+.logs {
+    font: 14px monospace;
+}
+
+.logs__item {
+    color: #333;
+    padding: 1px 6px;
+    white-space: pre-wrap;
+}
+.logs__item:first-child {
+    padding-top: 3px;
+}
+.logs__item:before {
+    content: '>';
+    color: #367CF1;
+    padding: 0 3px;
+}
+
+
+/* requests */
+.requests {
+    font-size: 0;
+}
+
+.chart {
+    font: 16px sans-serif;
+}
+
+.chart .container rect {
+    fill: #42ABF5;
+}
+.chart .container .success rect {
+    fill: #42C64F;
+}
+.chart .container .error rect {
+    fill: #F58180;
+}
+
+.chart .container text {
+    fill: white;
+    font-size: 10px;
+    text-anchor: start;
+}
+
+.chart .axis .header {
+    fill: #D9D9D9;
+    opacity: 0.3;
+}
+
+.chart .axis line {
+    stroke: #E6E6E6;
+}
+
+.chart .axis path {
+    display: none;
+}
+
+.chart .axis text {
+    fill: #777;
+    font-size: 10px;
+    text-anchor: end;
+}
