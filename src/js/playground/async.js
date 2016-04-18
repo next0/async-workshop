@@ -75,7 +75,7 @@ export default {
                 fetch('3')
             ]);
 
-            log('[r1, r2, r3] ->', result);
+            log('Promise.all([r1, r2, r3]) ->', result);
             log('done!');
         } catch (error) {
             log('ERROR:', error.message);
@@ -97,7 +97,7 @@ export default {
             fetch('2'),
             fetch('3')
         ]);
-        log('Promise.all(r2, r3) ->', result2, result3);
+        log('Promise.all([r2, r3]) ->', result2, result3);
 
         try {
             let [result4, result5, result6] = await Promise.all([
@@ -105,9 +105,9 @@ export default {
                 fetch('5-fail'),
                 fetch('6')
             ]);
-            log('Promise.all(r4, r5, r6) ->', result4, result5, result6);
-        } catch (e) {
-            log('error handled -> repair');
+            log('Promise.all([r4, r5, r6]) ->', result4, result5, result6);
+        } catch (error) {
+            log('error handled -> repair', '(', error.message, ')');
 
             let result7 = await fetch('7');
             log('r7 ->', result7);
@@ -118,7 +118,7 @@ export default {
             fetch('9'),
             fetch('10')
         ]);
-        log('Promise.race(r8, r9, r10)', result8or9or10);
+        log('Promise.race([r8, r9, r10])', result8or9or10);
 
         let result11 = await fetch('11');
         log('r11 ->', result11);
@@ -129,12 +129,12 @@ export default {
                 fetch('13-fail'),
                 fetch('14')
             ]);
-            log('Promise.race(r12, r13, r14) ->', result12or13or14);
+            log('Promise.race([r12, r13, r14]) ->', result12or13or14);
 
             let result15 = await fetch('15');
             log('r15 ->', result15);
-        } catch (e) {
-            log('error handled -> repair');
+        } catch (error) {
+            log('error handled -> repair', '(', error.message, ')');
 
             let result16 = await fetch('16');
             log('r16 ->', result16);

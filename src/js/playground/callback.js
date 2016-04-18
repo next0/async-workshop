@@ -91,7 +91,7 @@ export default {
                 return log('ERROR:', error.message);
             }
 
-            log('[r1, r2, r3] ->', result);
+            log('parallel([r1, r2, r3]) ->', result);
             log('done!');
         });
     }
