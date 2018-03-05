@@ -1,7 +1,7 @@
 export default {
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'callback example 0': function (utils) {
         var log = utils.log;
@@ -21,7 +21,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'callback example 1': function (utils) {
         var log = utils.log;
@@ -53,7 +53,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'callback example 2': function (utils) {
         var log = utils.log;

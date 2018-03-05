@@ -3,10 +3,243 @@ body {
     margin: 0;
 }
 
+/* blue print */
+.blueprint {
+    margin: 20px;
+    height: 410px;
+}
+
+.blueprint .header, .blueprint .footer {
+    height: 50px;
+    background: #dadada;
+    border-bottom: 12px solid #fff;
+    box-sizing: border-box;
+}
+
+.blueprint .header {
+    position: relative;
+    height: 75px;
+}
+
+.blueprint .avatar {
+    position: absolute;
+    right: 20px;
+    top: 8px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #f1f1f1;
+}
+
+.blueprint .avatar:hover {
+    background: #42abf5;
+}
+
+.blueprint .avatar.rendered {
+    background: #42c64f;
+}
+
+.blueprint .container {
+    font-size: 0;
+    background: #dadada;
+    border-bottom: 12px solid #fff;
+}
+
+.blueprint .content, .blueprint .side {
+    display: inline-block;
+    height: 300px;
+    background: #dadada;
+    box-sizing: border-box;
+}
+
+.blueprint .content {
+    width: 70%;
+}
+
+.blueprint .article {
+    height: 160px;
+    margin: 10px;
+    background-image:
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0);
+    background-size:
+        90% 8px,
+        85% 8px,
+        92% 8px,
+        65% 8px;
+    background-position:
+        8px 10px,
+        8px 30px,
+        8px 50px,
+        8px 70px;
+    background-repeat: no-repeat;
+}
+
+.blueprint .article:hover {
+    background-image:
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0);
+
+}
+
+.blueprint .article.rendered {
+    background-image:
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0);
+}
+
+.blueprint .comments {
+    height: 110px;
+    margin: 10px;
+    background-image:
+        radial-gradient(circle 20px, #f3f1ed 99%, transparent 0),
+        linear-gradient(#f3f1ed 8px, transparent 0),
+        linear-gradient(#f3f1ed 8px, transparent 0),
+        radial-gradient(circle 20px, #f3f1ed 99%, transparent 0),
+        linear-gradient(#f3f1ed 8px, transparent 0),
+        linear-gradient(#f3f1ed 8px, transparent 0);
+    background-size:
+        40px 40px,
+        70% 8px,
+        40% 8px,
+        40px 40px,
+        65% 8px,
+        45% 8px;
+    background-position:
+        8px 10px,
+        68px 18px,
+        68px 38px,
+        8px 60px,
+        68px 68px,
+        68px 88px;
+    background-repeat: no-repeat;
+}
+
+.blueprint .comments:hover {
+    background-image:
+        radial-gradient(circle 20px, #42abf5 99%, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        radial-gradient(circle 20px, #42abf5 99%, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0);
+}
+
+.blueprint .comments.rendered {
+    background-image:
+        radial-gradient(circle 20px, #42c64f 99%, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        radial-gradient(circle 20px, #42c64f 99%, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0);
+}
+
+.blueprint .side {
+    width: 30%;
+    border-left: 12px solid #fff;
+}
+
+.blueprint .related {
+    height: 185px;
+    margin: 10px;
+    background-image:
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0);
+    background-size:
+        30% 8px,
+        88% 8px,
+        37% 8px,
+        82% 8px,
+        35% 8px,
+        90% 8px;
+    background-position:
+        8px 10px,
+        8px 25px,
+        8px 50px,
+        8px 65px,
+        8px 90px,
+        8px 105px;
+    background-repeat: no-repeat;
+}
+
+.blueprint .related:hover {
+    background-image:
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0);
+}
+
+.blueprint .related.rendered {
+    background-image:
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0);
+}
+
+.blueprint .tags {
+    height: 50px;
+    margin: 10px;
+    background-image:
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0),
+        linear-gradient(#f1f1f1 8px, transparent 0);
+    background-size:
+        20% 8px,
+        30% 8px,
+        18% 8px,
+        27% 8px,
+        15% 8px;
+    background-position:
+        8px 10px,
+        40% 10px,
+        76% 10px,
+        8px 25px,
+        40% 25px;
+    background-repeat: no-repeat;
+}
+
+.blueprint .tags:hover {
+    background-image:
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0),
+        linear-gradient(#42abf5 8px, transparent 0);
+}
+
+.blueprint .tags.rendered {
+    background-image:
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0),
+        linear-gradient(#42c64f 8px, transparent 0);
+}
+
 /* playground */
 .playground {
     font-size: 0;
     padding: 3px 0;
+    margin: 0 20px;
 }
 
 .playground__title {
@@ -20,7 +253,7 @@ body {
 .playground__requests, .playground__logs {
     display: inline-block;
     overflow: auto;
-    height: 120px;
+    height: 200px;
     border: 1px solid #DADADA;
     box-sizing: border-box;
 }
@@ -74,7 +307,7 @@ body {
 
 .chart .container text {
     fill: white;
-    font-size: 10px;
+    font-size: 12px;
     text-anchor: start;
 }
 

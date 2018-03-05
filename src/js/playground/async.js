@@ -21,14 +21,14 @@ function wrap(fn) {
 export default {
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'async function example 0': async function (utils) {
         let log = utils.log;
         let fetch = wrap(utils.fetch);
 
         try {
-            let result1 = await fetch('1');
+            let result1 = await fetch('/api/user');
             log('r1 ->', result1);
             log('done!');
         } catch (error) {
@@ -38,7 +38,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'async function example 1': async function (utils) {
         let log = utils.log;
@@ -62,7 +62,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'async function example 2': async function (utils) {
         let log = utils.log;
@@ -84,7 +84,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'async function example 100500': async function (utils) {
         let log = utils.log;

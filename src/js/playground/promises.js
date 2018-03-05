@@ -21,7 +21,7 @@ function wrap(fn) {
 export default {
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'promise example 0': function (utils) {
         var log = utils.log;
@@ -39,7 +39,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'promise example 1': function (utils) {
         var log = utils.log;
@@ -65,7 +65,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'promise example 2': function (utils) {
         var log = utils.log;
@@ -87,7 +87,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'promise example 3': function (utils) {
         var log = utils.log;
@@ -109,7 +109,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'promise example 4': function (utils) {
         var log = utils.log;
@@ -143,7 +143,7 @@ export default {
 
     /**
      *
-     * @param {{fetch: Function, log: Function}} utils
+     * @param {UtilsHelper} utils
      */
     'promise example 5': function (utils) {
         var log = utils.log;

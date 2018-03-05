@@ -8,29 +8,29 @@ import d3 from 'd3';
 export function requests({node, meta}) {
     const INITIALIZE_TIME = new Date();
     const TIME_THRESHOLD = 1000;
-    const TICK_SIZE = 100;
+    const TICK_SIZE = 200;
     const MARGIN_TOP = 25;
-    const BAR_HEIGHT = 15;
+    const BAR_HEIGHT = 25;
     const BAR_STEP = 3;
 
-    var svg = d3.select(node)
+    let svg = d3.select(node)
         .append('svg')
         .attr('class', 'chart');
 
-    var axis = svg.append('g')
+    let axis = svg.append('g')
         .attr('class', 'axis');
 
-    var axisHeader = axis.append('rect')
+    let axisHeader = axis.append('rect')
         .attr('class', 'header')
         .attr('x', 0)
         .attr('y', 0)
-        .attr('height', '1.2em');   
+        .attr('height', '1.2em');
 
-    var container = svg.append('g')
+    let container = svg.append('g')
         .attr('class', 'container')
         .attr('transform', `translate(0,${ MARGIN_TOP})`);
 
-    var lock = false;
+    let lock = false;
     function render() {
         if (lock) {
             return;
@@ -44,28 +44,28 @@ export function requests({node, meta}) {
             const OFFSET_HEIGHT = node.clientHeight;
             const NOW = new Date();
 
-            var startTime = d3.min(meta.requests, (req) => req.start) || INITIALIZE_TIME,
+            let startTime = d3.min(meta.requests, (req) => req.start) || INITIALIZE_TIME,
                 finishTime = d3.max(meta.requests, (req) => req.finish),
                 done;
 
             done = meta.requests.every((req) => Boolean(req.finish)) && (NOW - finishTime > TIME_THRESHOLD);
-            
+
             startTime = d3.min([INITIALIZE_TIME, startTime]);
             finishTime = d3.max([
                 done ? finishTime : NOW,
                 new Date(startTime.getTime() + OFFSET_WIDTH * 1000 / TICK_SIZE)
             ]);
 
-            var width = Math.max(OFFSET_WIDTH, (finishTime - startTime) * TICK_SIZE / 1000),
+            let width = Math.max(OFFSET_WIDTH, (finishTime - startTime) * TICK_SIZE / 1000),
                 height = Math.max(OFFSET_HEIGHT, BAR_HEIGHT * meta.requests.length + MARGIN_TOP);
 
             // init x scale
-            var x = d3.time.scale()
+            let x = d3.time.scale()
                 .range([0, width])
                 .domain([startTime, finishTime]);
 
             // init x axis
-            var xAxis = d3.svg.axis()
+            let xAxis = d3.svg.axis()
                 .orient('top')
                 .scale(x)
                 .ticks(d3.time.seconds, 1)
@@ -84,11 +84,11 @@ export function requests({node, meta}) {
                     .attr('dy', '1.5em');
 
             // render bars
-            var bars = container.selectAll('g')
+            let bars = container.selectAll('g')
                 .data(meta.requests);
 
             // bars enter
-            var bar = bars.enter().append('g')
+            let bar = bars.enter().append('g')
                 .attr('class', (req) => req.status)
                 .attr('transform', (req, i) => `translate(${ x(req.start) },${ i * BAR_HEIGHT })`);
 
@@ -134,10 +134,10 @@ export function requests({node, meta}) {
  * @param {MetaData} meta
  */
 export function logs({node, meta}) {
-    var container = d3.select(node);
+    let container = d3.select(node);
 
     function render() {
-        var logs = container.selectAll('.logs__item')
+        let logs = container.selectAll('.logs__item')
             .data(meta.logs);
 
         // logs enter
@@ -162,23 +162,50 @@ export function logs({node, meta}) {
 /**
  *
  * @param {HTMLElement} node
+ * @param {MetaData} meta
+ */
+export function blueprintRender({node, meta}) {
+    function render() {
+        node.querySelectorAll('.rendered').forEach((node) => node.classList.remove('rendered'));
+
+        meta.blueprint.forEach((item) => {
+            let el = node.querySelector('.' + item.type);
+
+            if (el) {
+                el.classList.add('rendered');
+            }
+        });
+    }
+
+    // redraw after change
+    meta.on('change:blueprint', render);
+
+    // first render
+    render();
+}
+
+
+/**
+ *
+ * @param {HTMLElement} node
  * @param {string} name
  * @param {MetaData} meta
  */
 export function playground({node, name, meta}) {
-    var playgroundElem = d3.select(node).append('div')
+    let playgroundElem = d3.select(node).append('div')
         .attr('class', 'playground');
 
     playgroundElem.append('div')
         .attr('class', 'playground__title')
         .text(name);
 
-    var requestsElem = playgroundElem.append('div')
+    let requestsElem = playgroundElem.append('div')
         .attr('class', 'playground__requests requests');
 
-    var logsElem = playgroundElem.append('div')
+    let logsElem = playgroundElem.append('div')
         .attr('class', 'playground__logs logs');
 
     requests({node: requestsElem.node(), meta});
     logs({node: logsElem.node(), meta});
+    blueprintRender({node: d3.select('.blueprint').node(), meta});
 }
