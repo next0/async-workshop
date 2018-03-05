@@ -166,6 +166,25 @@ export function logs({node, meta}) {
  */
 export function blueprintRender({node, meta}) {
     function render() {
+        node.innerHTML = `
+            <div class="header">
+                <div class="avatar"></div>
+            </div>
+            <div class="container">
+                <div class="content">
+                    <div class="article"></div>
+                    <div class="comments"></div>
+                </div>
+                <div class="side">
+                    <div class="related"></div>
+                    <div class="tags"></div>
+                </div>
+            </div>
+            <div class="footer"></div>
+        `;
+    }
+
+    function redraw() {
         node.querySelectorAll('.rendered').forEach((node) => node.classList.remove('rendered'));
 
         meta.blueprint.forEach((item) => {
@@ -178,10 +197,11 @@ export function blueprintRender({node, meta}) {
     }
 
     // redraw after change
-    meta.on('change:blueprint', render);
+    meta.on('change:blueprint', redraw);
 
     // first render
     render();
+    redraw();
 }
 
 
@@ -192,6 +212,9 @@ export function blueprintRender({node, meta}) {
  * @param {MetaData} meta
  */
 export function playground({node, name, meta}) {
+    let blueprintElem = d3.select(node).append('div')
+        .attr('class', 'blueprint');
+
     let playgroundElem = d3.select(node).append('div')
         .attr('class', 'playground');
 
@@ -205,7 +228,7 @@ export function playground({node, name, meta}) {
     let logsElem = playgroundElem.append('div')
         .attr('class', 'playground__logs logs');
 
+    blueprintRender({node: blueprintElem.node(), meta});
     requests({node: requestsElem.node(), meta});
     logs({node: logsElem.node(), meta});
-    blueprintRender({node: d3.select('.blueprint').node(), meta});
 }

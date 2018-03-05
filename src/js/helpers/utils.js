@@ -131,6 +131,10 @@ export function factory() {
      * @param {*} data
      */
     function render(type, data) {
+        if (!data) {
+            throw new Error('Invalid data');
+        }
+
         log('Render block "' + type + '". Payload: ', data);
         meta.add('blueprint', {
             type,
