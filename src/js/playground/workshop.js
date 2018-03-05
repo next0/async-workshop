@@ -8,6 +8,9 @@
  * 'api/log/error'
  */
 export default {
+    /**
+     * @param {UtilsHelper} utils
+     */
     'async await': async function (utils) {
         const log = utils.log;
 
@@ -66,6 +69,9 @@ export default {
         }
     },
 
+    /**
+     * @param {UtilsHelper} utils
+     */
     'promises': function (utils) {
         const log = utils.log;
 
