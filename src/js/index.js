@@ -16,5 +16,5 @@ function run(examples) {
     });
 }
 
-// run(playgroundBase);
+run(playgroundBase);
 run(playgroundWorkshop);

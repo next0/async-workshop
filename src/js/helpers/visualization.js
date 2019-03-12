@@ -44,11 +44,10 @@ export function requests({node, meta}) {
             const OFFSET_HEIGHT = node.clientHeight;
             const NOW = new Date();
 
-            let startTime = d3.min(meta.requests, (req) => req.start) || INITIALIZE_TIME,
-                finishTime = d3.max(meta.requests, (req) => req.finish),
-                done;
+            let startTime = d3.min(meta.requests, (req) => req.start) || INITIALIZE_TIME;
+            let finishTime = d3.max(meta.requests, (req) => req.finish);
 
-            done = meta.requests.every((req) => Boolean(req.finish)) && (NOW - finishTime > TIME_THRESHOLD);
+            let done = meta.requests.every((req) => Boolean(req.finish)) && (NOW - finishTime > TIME_THRESHOLD);
 
             startTime = d3.min([INITIALIZE_TIME, startTime]);
             finishTime = d3.max([
@@ -56,8 +55,8 @@ export function requests({node, meta}) {
                 new Date(startTime.getTime() + OFFSET_WIDTH * 1000 / TICK_SIZE)
             ]);
 
-            let width = Math.max(OFFSET_WIDTH, (finishTime - startTime) * TICK_SIZE / 1000),
-                height = Math.max(OFFSET_HEIGHT, BAR_HEIGHT * meta.requests.length + MARGIN_TOP);
+            let width = Math.max(OFFSET_WIDTH, (finishTime - startTime) * TICK_SIZE / 1000);
+            let height = Math.max(OFFSET_HEIGHT, BAR_HEIGHT * meta.requests.length + MARGIN_TOP);
 
             // init x scale
             let x = d3.time.scale()

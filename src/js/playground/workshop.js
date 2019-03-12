@@ -11,7 +11,7 @@ export default {
     /**
      * @param {UtilsHelper} utils
      */
-    'callback hell': function (utils) {
+    '-callback hell': function (utils) {
         let log = utils.log;
         let fetch = utils.fetch;
 
