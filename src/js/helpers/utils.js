@@ -78,7 +78,7 @@ export function factory() {
     /**
      *
      * @param {string} url
-     * @param {Function} callback
+     * @param {function} callback
      */
     function fetch(url, callback) {
         let request = meta.add('requests', {
@@ -88,22 +88,28 @@ export function factory() {
             finish: null
         });
 
-        let emit = (error, data) => {
+        /**
+         *
+         * @param {Error | null} error
+         * @param {*} [data]
+         */
+        function emit(error, data) {
             request.update({
                 status: (error) ? 'error' : 'success',
                 finish: new Date()
             });
 
             callback(error, data);
-        };
+        }
 
         setTimeout(() => {
-            if (url.indexOf('fail=1') !== -1) {
-                return emit(new Error('Request failed:' + url));
-            }
+            let parsedUrl = new URL(url, location.origin);
+            let failRate = parsedUrl.searchParams.has('fail')
+                ? Number(parsedUrl.searchParams.get('fail'))
+                : -1;
 
-            if (url.indexOf('fail=0.5') !== -1 && Math.random() > 0.5) {
-                return emit(new Error('Request failed:' + url));
+            if (Math.random() > (1 - failRate)) {
+                return emit(new Error('Request failed: ' + url));
             }
 
             let payload = mocks[url] ? mocks[url] : {};
@@ -114,7 +120,7 @@ export function factory() {
 
     /**
      *
-     * @param {*} data
+     * @param {*[]} args
      */
     function log(...args) {
         let data = args.map((arg) => (typeof arg === 'string') ? arg : JSON.stringify(arg, null, 4));
@@ -142,22 +148,42 @@ export function factory() {
         })
     }
 
+    /**
+     *
+     * @param {*} data
+     */
     function renderAvatar(data) {
         render('avatar', data);
     }
 
+    /**
+     *
+     * @param {*} data
+     */
     function renderArticle(data) {
         render('article', data);
     }
 
+    /**
+     *
+     * @param {*} data
+     */
     function renderComments(data) {
         render('comments', data);
     }
 
+    /**
+     *
+     * @param {*} data
+     */
     function renderRelated(data) {
         render('related', data);
     }
 
+    /**
+     *
+     * @param {*} data
+     */
     function renderTags(data) {
         render('tags', data);
     }

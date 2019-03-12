@@ -1,7 +1,7 @@
 /**
  * 'api/user'
- * 'api/articles/?random=1&userid='
- * 'api/comments/?articleid='
+ * 'api/articles?random=1&userid='
+ * 'api/comments?articleid='
  * 'api/related?articleid='
  * 'api/tags?articleid='
  * 'api/log/time?fail=0.5&duration='
@@ -11,10 +11,10 @@ export default {
     /**
      * @param {UtilsHelper} utils
      */
-    '-async await': async function (utils) {
+    'async await': async function (utils) {
         let log = utils.log;
 
-        let fetch = function (url) {
+        function fetch(url) {
             return new Promise((resolve, reject) => {
                 utils.fetch(url, (error, payload) => {
                     if (error) {
@@ -24,7 +24,7 @@ export default {
                     }
                 });
             });
-        };
+        }
 
         let start = Date.now();
 
@@ -32,7 +32,7 @@ export default {
             let user = await fetch('api/user');
             utils.renderAvatar(user);
 
-            let article = await fetch('api/articles/?random=1&userid=' + encodeURIComponent(user.id));
+            let article = await fetch('api/articles?random=1&userid=' + encodeURIComponent(user.id));
             utils.renderArticle(article);
 
             let id = article[0].id;
@@ -66,10 +66,10 @@ export default {
     /**
      * @param {UtilsHelper} utils
      */
-    '-promises': function (utils) {
+    'promises': function (utils) {
         let log = utils.log;
 
-        let fetch = function (url) {
+        function fetch(url) {
             return new Promise((resolve, reject) => {
                 utils.fetch(url, (error, payload) => {
                     if (error) {
@@ -79,14 +79,14 @@ export default {
                     }
                 });
             });
-        };
+        }
 
         let start = Date.now();
 
         fetch('api/user')
             .then((user) => {
                 utils.renderAvatar(user);
-                return fetch('api/articles/?random=1&userid=' + encodeURIComponent(user.id));
+                return fetch('api/articles?random=1&userid=' + encodeURIComponent(user.id));
             })
             .then((article) => {
                 utils.renderArticle(article);
@@ -94,7 +94,7 @@ export default {
                 let id = article[0].id;
 
                 return Promise.all([
-                    fetch('api/comments/?articleid=' + encodeURIComponent(id)),
+                    fetch('api/comments?articleid=' + encodeURIComponent(id)),
                     fetch('api/related?articleid=' + encodeURIComponent(id)),
                     fetch('api/tags?articleid=' + encodeURIComponent(id))
                 ]);
@@ -125,7 +125,7 @@ export default {
     /**
      * @param {UtilsHelper} utils
      */
-    '-callback hell': function (utils) {
+    'callback hell': function (utils) {
         let log = utils.log;
         let fetch = utils.fetch;
 
@@ -159,7 +159,7 @@ export default {
 
             utils.renderAvatar(avatarResult);
 
-            fetch('api/articles/?random=1&userid=' + encodeURIComponent(avatarResult.id), (error, articleResult) => {
+            fetch('api/articles?random=1&userid=' + encodeURIComponent(avatarResult.id), (error, articleResult) => {
                 if (error) {
                     fetch('api/log/error');
                     return;

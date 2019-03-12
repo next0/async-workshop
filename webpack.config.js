@@ -1,8 +1,8 @@
-var path = require('path');
-var autoprefixer = require('autoprefixer');
+const path = require('path');
+const autoprefixer = require('autoprefixer');
 
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const ROOT_PATH = path.join(__dirname, '/');
 const DEVELOPMENT_MODE = !process.argv.some(function (arg) {
@@ -66,7 +66,7 @@ module.exports = {
     },
 
     plugins: (function () {
-        var plugings = [
+        let plugings = [
             new ExtractTextPlugin('[name].bundle.css')
         ];
 

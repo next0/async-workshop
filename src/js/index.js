@@ -1,7 +1,5 @@
-import playgroundCallback from './playground/callback';
-import playgroundPromises from './playground/promises';
-import playgroundAsync from './playground/async';
 import playgroundWorkshop from './playground/workshop';
+import playgroundBase from './playground/_';
 import {factory} from './helpers/utils';
 import {playground} from './helpers/visualization';
 
@@ -18,7 +16,5 @@ function run(examples) {
     });
 }
 
+// run(playgroundBase);
 run(playgroundWorkshop);
-// run(playgroundCallback);
-// run(playgroundPromises);
-// run(playgroundAsync);
